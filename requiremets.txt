@@ -1,0 +1,15 @@
+langchain
+langchain-community
+unstructured[pdf] 
+pypdf 
+chromadb 
+openai 
+tiktoken
+python-dotenv
+langchain-google-vertexai
+google-generativeai
+langchain-google-genai
+python-dotenv
+langchain_google_genai
+langchain-openai
+Flask

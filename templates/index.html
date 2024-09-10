@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat con el Asistente</title>
+</head>
+<body>
+    <h1>Haz una pregunta sobre el PDF</h1>
+    <form id="question-form">
+        <label for="question">Tu Pregunta:</label>
+        <input type="text" id="question" name="question" required>
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="response">
+        <h2>Respuesta del Asistente:</h2>
+        <p id="assistant-response"></p>
+    </div>
+
+    <script>
+        document.getElementById('question-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const question = document.getElementById('question').value;
+
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question })
+            });
+
+            const data = await response.json();
+            document.getElementById('assistant-response').textContent = data.answer;
+        });
+    </script>
+</body>
+</html>
